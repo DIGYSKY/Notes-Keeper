@@ -28,14 +28,14 @@ export class MessagesManager {
     this.#messages.push(message);
     await this.save();
 
-    // Envoyer le message au serveur
+
     await NoteKeeper.sendMessage(content);
 
     return message;
   }
 
   async addReceivedMessage(message) {
-    // Vérifier si le message existe déjà (éviter les doublons)
+
     const existingMessage = this.#messages.find(m =>
       m.content === message.content &&
       Math.abs(new Date(m.timestamp) - new Date(message.timestamp)) < 5000

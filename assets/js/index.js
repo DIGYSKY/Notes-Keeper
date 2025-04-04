@@ -10,12 +10,12 @@ let noteInput = document.querySelector("textarea[name='content']");
 const notesContainer = document.querySelector("#notes");
 const communicationContainer = document.querySelector("#communication");
 
-// Initialiser les gestionnaires
+
 const notesManager = new NotesManager();
 const notesSynchronizer = new NotesSynchronizer(notesManager);
 const messagesManager = new MessagesManager();
 
-// Initialiser NoteKeeper
+
 let isInitialized = false;
 const initializeApp = async () => {
   try {
@@ -24,13 +24,13 @@ const initializeApp = async () => {
       await notesManager.init();
       await messagesManager.init();
 
-      // Demander la permission pour les notifications
+
       await NotificationManager.requestPermission();
 
-      // Enregistrer le service worker
+
       await NotificationManager.registerServiceWorker();
 
-      // Configurer l'écouteur de messages
+
       NoteKeeper.onMessage(async (message) => {
         await messagesManager.addReceivedMessage(message);
 
@@ -59,7 +59,7 @@ const initializeApp = async () => {
       isInitialized = true;
     }
 
-    // Charger les notes initiales
+
     const notes = await notesManager.getAllNotes();
     if (!notes || notes.length === 0) {
       notesContainer.innerHTML = "<p>Aucune note disponible</p>";
@@ -68,7 +68,7 @@ const initializeApp = async () => {
     }
     setupEventListeners();
 
-    // Synchroniser avec le serveur
+
     const syncResult = await notesSynchronizer.sync();
     if (syncResult) {
       const updatedNotes = await notesManager.getAllNotes();
@@ -78,11 +78,11 @@ const initializeApp = async () => {
     }
     setupEventListeners();
 
-    // Afficher les messages
+
     renderMessages();
   } catch (error) {
     console.error("Erreur lors de l'initialisation:", error);
-    // Afficher un message d'erreur à l'utilisateur
+
     notesContainer.innerHTML = `<div class="error">Erreur de connexion au serveur. Veuillez réessayer plus tard.</div>`;
   }
 };
@@ -116,7 +116,7 @@ const deleteNote = async id => {
   }
   setupEventListeners();
 
-  // Synchroniser avec le serveur
+
   await notesSynchronizer.sync();
 };
 
@@ -128,7 +128,7 @@ const saveNote = async (id, content) => {
   }
   setupEventListeners();
 
-  // Synchroniser avec le serveur
+
   await notesSynchronizer.sync();
 };
 
@@ -139,30 +139,30 @@ const addNote = async () => {
   if (notes) {
     notesContainer.innerHTML = generateHtmlNotes(notes);
   }
-  // Réinitialiser le champ de texte
+
   noteInput.value = "";
   setupEventListeners();
 
-  // Synchroniser avec le serveur
+
   await notesSynchronizer.sync();
 };
 
 const setupEventListeners = () => {
-  // Supprimer les anciens événements
+
   const newNoteForm = noteForm.cloneNode(true);
   noteForm.parentNode.replaceChild(newNoteForm, noteForm);
   noteForm = newNoteForm;
 
-  // Mettre à jour la référence à noteInput
+
   noteInput = document.querySelector("textarea[name='content']");
 
-  // Ajouter les nouveaux événements
+
   noteForm.addEventListener("submit", async e => {
     e.preventDefault();
     await addNote();
   });
 
-  // Gérer les boutons de sauvegarde
+
   document.querySelectorAll(".save-note").forEach(button => {
     button.addEventListener("click", async () => {
       const id = button.dataset.id;
@@ -171,7 +171,7 @@ const setupEventListeners = () => {
     });
   });
 
-  // Gérer les boutons de suppression
+
   document.querySelectorAll(".delete-note").forEach(button => {
     button.addEventListener("click", async () => {
       await deleteNote(button.dataset.id);
@@ -179,7 +179,7 @@ const setupEventListeners = () => {
   });
 };
 
-// Fonctions pour la partie communication
+
 const renderMessages = async () => {
   const messages = await messagesManager.getAllMessages();
   const messagesList = document.querySelector(".messages-list");
@@ -254,7 +254,7 @@ const sendMessage = async () => {
   }
 };
 
-// while (true) {
-//   await new Promise(resolve => setTimeout(resolve, 1000));
-//   await messagesManager.addMessage("spam");
-// }
+
+
+
+

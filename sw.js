@@ -15,7 +15,7 @@ const ASSETS_TO_CACHE = [
   "/manifest.json"
 ];
 
-// Installation du Service Worker
+
 self.addEventListener("install", (event) => {
   event.waitUntil(
     caches.open(CACHE_NAME).then((cache) => {
@@ -24,7 +24,7 @@ self.addEventListener("install", (event) => {
   );
 });
 
-// Activation du Service Worker
+
 self.addEventListener("activate", (event) => {
   event.waitUntil(
     caches.keys().then((cacheNames) => {
@@ -37,7 +37,7 @@ self.addEventListener("activate", (event) => {
   );
 });
 
-// Interception des requêtes
+
 self.addEventListener("fetch", (event) => {
   event.respondWith(
     caches.match(event.request).then((response) => {
@@ -46,7 +46,7 @@ self.addEventListener("fetch", (event) => {
   );
 });
 
-// Gestion des notifications push
+
 self.addEventListener("push", (event) => {
   const options = {
     body: event.data ? event.data.text() : "Nouveau message reçu",
@@ -63,7 +63,7 @@ self.addEventListener("push", (event) => {
   );
 });
 
-// Gestion du clic sur la notification
+
 self.addEventListener("notificationclick", (event) => {
   event.notification.close();
 
