@@ -1,0 +1,39 @@
+{
+  "name": "note-keeper",
+  "version": "1.0.0",
+  "description": "## Contexte",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "start": "vite",
+    "build": "npm run build:css && npm run build:js && npm run build:manifest && npm run build:icons",
+    "build:css": "sass assets/css/style.scss build/assets/css/style.css",
+    "build:js": "babel assets/js --out-dir build/assets/js && uglifyjs build/assets/js/index.js -o build/assets/js/index.js",
+    "build:manifest": "cp manifest.json build/manifest.json",
+    "build:icons": "cp assets/icons/* build/assets/icons/",
+    "build:html": "cp index.html build/"
+  },
+  "author": "Lilyan CHAUVEAU",
+  "license": "ISC",
+  "devDependencies": {
+    "vite": "^5.1.4",
+    "sass": "^1.86.3",
+    "@babel/cli": "^7.24.0",
+    "@babel/core": "^7.24.0",
+    "@babel/preset-env": "^7.24.0",
+    "@babel/plugin-proposal-class-properties": "^7.18.6",
+    "@babel/plugin-proposal-private-methods": "^7.18.6",
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.0",
+    "uglify-js": "^3.19.3"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties",
+      "@babel/plugin-proposal-private-methods",
+      "@babel/plugin-proposal-private-property-in-object"
+    ]
+  }
+}

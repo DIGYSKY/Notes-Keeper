@@ -1,0 +1,35 @@
+{
+  // Paramètres d'indentation
+  "editor.tabSize": 2, // Nombre d'espaces pour une tabulation
+  "editor.insertSpaces": true, // Utiliser des espaces au lieu des tabulations
+  "editor.detectIndentation": false, // Désactive la détection automatique de l'indentation
+  // Divers
+  "editor.formatOnSave": true,
+  "editor.rulers": [
+    {
+      "column": 80, // Position de la règle (obligatoire)
+      "color": "#ff0000", // Couleur de la règle
+      "lineStyle": "solid" // Style de la ligne : "solid" ou "dashed"
+    },
+    {
+      "column": 120, // Position de la règle (obligatoire)
+      "color": "#ff0000", // Couleur de la règle
+      "lineStyle": "solid" // Style de la ligne : "solid" ou "dashed"
+    }
+  ],
+  "files.autoSave": "afterDelay", // Sauvegarde automatique après un délai
+  "files.autoSaveDelay": 500, // Délai de sauvegarde automatique en millisecondes
+  // Affichage des règles
+  "editor.guides.indentation": true, // Affiche les guides d'indentation
+  "editor.guides.bracketPairs": true, // Affiche les guides pour les paires de crochets
+  "editor.guides.highlightActiveBracketPair": true, // mise en évidence des paires de crochets/accolades/parenthèses
+  // Marges et espaces
+  "editor.renderWhitespace": "all", // Affiche les espaces ("all", "none", "boundary", "selection")
+  "editor.wordWrap": "off", // Retour à la ligne ("off", "on", "wordWrapColumn", "bounded")
+  "editor.wordWrapColumn": 120, // Colonne pour le retour à la ligne
+  // Lignes
+  "editor.lineNumbers": "on", // Numéros de ligne ("on", "off", "relative")
+  "editor.glyphMargin": true, // Marge pour les icônes (breakpoints, etc.)
+  "editor.folding": true, // Permet de plier le code
+  "editor.renderLineHighlight": "all", // Surlignage de la ligne active ("none", "gutter", "line", "all")
+}
